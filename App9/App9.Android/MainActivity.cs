@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Threading.Tasks;
+using ZXing.Mobile;
 
 namespace App9.Droid
 {
@@ -22,6 +24,8 @@ namespace App9.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
+
+        
     }
 }
 

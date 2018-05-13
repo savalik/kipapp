@@ -11,7 +11,7 @@ namespace App9
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new TabbedPage();
 		}
 
 		protected override void OnStart ()
