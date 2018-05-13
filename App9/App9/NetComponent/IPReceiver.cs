@@ -38,10 +38,10 @@ namespace App9
                     Console.WriteLine(message);
                     if (message != "")
                     {
-                        Label ownLabel = (Label)label;
-                        ownLabel.Text = message;
                         var vs = message.Split(':');
                         IPaddress = vs[1];
+                        Label ownLabel = (Label)label;
+                        ownLabel.Text = message;
                         break;
                     };
                 }

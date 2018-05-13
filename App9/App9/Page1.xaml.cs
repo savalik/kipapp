@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -35,7 +36,8 @@ namespace App9
 
         private void OnPrintDocsButtonClicked(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            Thread thread = new Thread(Sender.PrepareAndSend);
+            thread.Start();
         }
     }
 }

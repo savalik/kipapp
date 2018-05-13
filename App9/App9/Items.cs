@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace App9
+namespace App9.kek
 {
+    [Serializable]
     public class Items
     {
         public static List<Items> GetItems = new List<Items>();
@@ -18,8 +19,6 @@ namespace App9
         readonly string id;
 
         public bool RepairOrCheck { get; set; }
-
-
 
         private Items(string type, string number, string id)
         {

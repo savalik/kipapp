@@ -21,6 +21,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)NetComponent\IPReceiver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NetComponent\Sender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
       <SubType>Code</SubType>
