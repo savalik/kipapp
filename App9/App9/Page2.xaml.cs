@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KipItems;
+using KipLib;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -59,20 +59,15 @@ namespace App9
         private void OnCheckButtonClicked(object sender, System.EventArgs e)
         {
             GetQRCodeAsync(false);
-            //Items.
         }
 
         public async Task GetQRCodeAsync(bool RepairOrCheck)
         {
-            //ZXing.Net.Mobile.Forms.Android.Platform.Init();
-
-            var app = Xamarin.Forms.Forms.Context as Activity;
-            //var vv = Xamarin.Forms.Forms.Context as Android.App.Application;
-            //var xz = Xamarin.Forms.Application.Current as Android.App.Application;
+            var app = Forms.Context as Activity;
             
             MobileBarcodeScanner.Initialize(app.Application);
 
-            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+            var scanner = new MobileBarcodeScanner();
 
             var result = await scanner.Scan();
 
@@ -81,7 +76,6 @@ namespace App9
                 string[] block = result.Text.Split(',');
                 Items.CreateItem(block[1], block[2], block[0], RepairOrCheck);
                 Console.WriteLine("Scanned Barcode: " + result.Text);
-                //Net_cli.Send(result.Text);
                 Page1.GetListView.ItemsSource = Items.GetList();
             }
         }

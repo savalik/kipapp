@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using KipItems;
+using KipLib;
 
 namespace App9
 {
@@ -13,8 +13,8 @@ namespace App9
     {
         public static void PrepareAndSend()
         {
-            MemoryStream stream = SerializeToMemory(Items.GetItems);
-            Send(stream);
+           MemoryStream stream = SerializeToMemory(Items.GetItems);
+           Send(stream);
         }
 
         private static MemoryStream SerializeToMemory(List<Items> items)

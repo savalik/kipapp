@@ -16,14 +16,10 @@ namespace App9
         {
             InitializeComponent();
 
-            var page1 = new Page1();
-            page1.Title = "Список ремонта/проверки";
-            var page2 = new Page2();
-            page2.Title = "Добавить блок";
-            var page3 = new Page3();
-            page3.Title = "Замена";
-            var page4 = new Page4();
-            page4.Title = "Память";
+            var page1 = new Page1 {Title = "Список ремонта/проверки"};
+            var page2 = new Page2 { Title = "Добавить блок" };
+            var page3 = new Page3 { Title = "Замена" };
+            var page4 = new Page4 { Title = "Память" };
 
             Children.Add(page1);
             Children.Add(page2);
