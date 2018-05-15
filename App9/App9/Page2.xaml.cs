@@ -76,10 +76,10 @@ namespace App9
                 string[] block = result.Text.Split(',');
                 Items.CreateItem(block[1], block[2], block[0], RepairOrCheck);
                 Console.WriteLine("Scanned Barcode: " + result.Text);
-                Page1.GetListView.ItemsSource = Items.GetList();
+                Page1.GetListView.ItemsSource = ViewItems.GetViewItemsList(Items.GetItems);
+
             }
         }
-
 
     }
 }
