@@ -11,10 +11,10 @@ namespace App9
 {
     public static class Sender
     {
-        public static void PrepareAndSend()
+        public static void PrepareAndSend(object sendingEvent)
         {
            MemoryStream stream = SerializeToMemory(Items.GetItems);
-           Send(stream);
+           Send(stream, (byte)sendingEvent);
         }
 
         private static MemoryStream SerializeToMemory(List<Items> items)
@@ -26,7 +26,7 @@ namespace App9
             return stream;
         }
 
-        public static void Send(MemoryStream binaryStream)
+        public static void Send(MemoryStream binaryStream, byte sendingEvent)
         {
             TcpClient client = null;
             try
@@ -37,13 +37,15 @@ namespace App9
 
                 client = new TcpClient();
                 client.Connect(ipPoint);
-                //NetworkStream stream = client.GetStream();
 
                 using (MemoryStream ms = new MemoryStream())
                 {
                     binaryStream.CopyTo(ms);
                     byte[] messsize = BitConverter.GetBytes(ms.Length);
+                    byte[] receivedEvent = new byte[1];
+                    receivedEvent[0] = sendingEvent;
                     NetworkStream ns = client.GetStream();
+                    ns.Write(receivedEvent, 0, 1);
                     ns.Write(messsize, 0, messsize.Length);
                     ms.Position = 0;
                     ms.CopyTo(ns);
@@ -70,28 +72,3 @@ namespace App9
         }
     }
 }
-
-
-/*
-Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-socket.Connect(ipPoint);
-
-                
-socket.Send(data);
-
-responce = new byte[256];
-StringBuilder builder = new StringBuilder();
-int bytes = 0; 
-
-do
-{
-    bytes = socket.Receive(data, data.Length, 0);
-    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-}
-while (socket.Available > 0);
-*/
-
-/*
-Console.WriteLine("ответ сервера: " + builder.ToString());
-socket.Shutdown(SocketShutdown.Both);
-socket.Close();*/

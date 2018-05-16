@@ -35,8 +35,8 @@ namespace App9
 
         private void OnPrintDocsButtonClicked(object sender, EventArgs e)
         {
-            Thread thread = new Thread(Sender.PrepareAndSend);
-            thread.Start();
+            Thread thread = new Thread(new ParameterizedThreadStart(Sender.PrepareAndSend));
+            thread.Start((byte)0x00);
         }
     }
 }
