@@ -16,8 +16,9 @@ namespace App9
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            IPReceiver receiver = new IPReceiver();
+            // Handle when your app starts
+        }
 
 		protected override void OnSleep ()
 		{

@@ -12,23 +12,37 @@ namespace App9
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Page4 : ContentPage
 	{
-		public Page4 ()
+        public static ListView GetListView;
+        public static ListView GetReplacesView;
+
+        public Page4 ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
+
+            ListView listView = new ListView { ItemTemplate = ViewItems.itemsTemplate };
+            GetListView = listView;
+
+            var SendList = new Button { Text = "Передать данные на сервер" };
+
+            StackLayout TopLayout = new StackLayout();
+            TopLayout.Children.Add(listView);
+            TopLayout.Children.Add(SendList);
+
+            //ToDo поменять темплейт
+            ListView ReplacesView = new ListView { ItemTemplate = ViewItems.itemsTemplate };
+            GetReplacesView = ReplacesView;
+
+            var SendReplace = new Button { Text = "Передать данные на сервер" };
+
+            StackLayout BottomLayout = new StackLayout();
+            TopLayout.Children.Add(ReplacesView);
+            TopLayout.Children.Add(SendReplace);
 
             StackLayout layout = new StackLayout();
-            Label IPlabel = new Label()
-            {
-                Text = "Скоро здесь будет IP адрес",
-                VerticalOptions = LayoutOptions.End,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-                
-            IPReceiver receiver = new IPReceiver(IPlabel);
-
-            layout.Children.Add(IPlabel);
+            layout.Children.Add(TopLayout);
+            layout.Children.Add(BottomLayout);
 
             Content = layout;
-		}
-	}
+        }
+    }
 }

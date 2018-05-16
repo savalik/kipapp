@@ -17,28 +17,10 @@ namespace App9
 
 		public Page1 ()
 		{
-            ListView listView = new ListView
-            {
-                //ItemsSource = 
-            };
+            InitializeComponent();
+
+            ListView listView = new ListView { ItemTemplate = ViewItems.itemsTemplate };
             GetListView = listView;
-
-            var itemsTemplate = new DataTemplate(() =>
-            {
-                var stackLayout = new StackLayout() {Orientation = StackOrientation.Horizontal};
-                var repairLabel = new Label() { VerticalTextAlignment = TextAlignment.Center, HorizontalTextAlignment = TextAlignment.End, Margin = new Thickness(10,10) };
-                var textLabel = new Label() { VerticalTextAlignment = TextAlignment.Center };
-
-                repairLabel.SetBinding(Label.TextProperty, "repairSimbol");
-                repairLabel.SetBinding(BackgroundColorProperty, "color");
-                textLabel.SetBinding(Label.TextProperty, "text");
-
-                stackLayout.Children.Add(textLabel);
-                stackLayout.Children.Add(repairLabel);
-
-                return new ViewCell { View = stackLayout };
-            });
-            listView.ItemTemplate = itemsTemplate;
 
             var PrintDocs = new Button { Text = "Печатать контрольные карты и дефектные ведомости" };
             PrintDocs.Clicked += OnPrintDocsButtonClicked;

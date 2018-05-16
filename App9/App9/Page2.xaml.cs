@@ -77,7 +77,7 @@ namespace App9
                 Items.CreateItem(block[1], block[2], block[0], RepairOrCheck);
                 Console.WriteLine("Scanned Barcode: " + result.Text);
                 Page1.GetListView.ItemsSource = ViewItems.GetViewItemsList(Items.GetItems);
-
+                Page4.GetListView.ItemsSource = ViewItems.GetViewItemsList(Items.GetItems);
             }
         }
 

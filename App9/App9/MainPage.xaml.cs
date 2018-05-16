@@ -12,6 +12,6 @@ namespace App9
 		public MainPage()
 		{
 			InitializeComponent();
-		}
+        }
 	}
 }
